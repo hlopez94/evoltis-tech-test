@@ -16,7 +16,7 @@ export class MascotasServiceMock implements IMascotasService {
 
   agregarMascota(mascota: Mascota): Observable<Mascota> {
     //mascota.id = this.mascotas.length + 1;
-    this.mascotas.push(mascota);
+    this.mascotas = [...this.mascotas, mascota];
     this.guardarMascotasEnLocalStorage();
     return of(mascota);
   }
