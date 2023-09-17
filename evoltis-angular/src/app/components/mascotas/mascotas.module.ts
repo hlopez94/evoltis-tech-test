@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { MascotasRoutingModule } from './mascotas-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { ListadoMascotasComponent } from './listado-mascotas/listado-mascotas.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    ListadoMascotasComponent
   ],
   imports: [
     CommonModule,
-    MascotasRoutingModule
+    MascotasRoutingModule,
+    TableModule
   ]
 })
 export class MascotasModule { }

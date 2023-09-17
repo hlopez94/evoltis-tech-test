@@ -1,0 +1,131 @@
+<ng-container *ngIf="mascotas$ | async as mascotas">
+  <p-table
+    #dt1
+    [value]="mascotas"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [globalFilterFields]="[
+      'nombre',
+      'tipo',
+      'raza',
+    ]"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button
+          pButton
+          label="Clear"
+          class="p-button-outlined"
+          icon="pi pi-filter-slash"
+          (click)="clear(dt1)"
+        ></button>
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="dt1.filterGlobal($event.target, 'contains')"
+            placeholder="Search keyword"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 15rem">
+          <div class="flex align-items-center">
+            Nombre
+            <p-columnFilter
+              type="text"
+              field="nombre"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 15rem">
+          <div class="flex align-items-center">
+            Tipo
+            <p-columnFilter
+              type="text"
+              field="tipo"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th style="min-width: 10rem">
+          <div class="flex align-items-center">
+            Raza
+            <p-columnFilter
+              type="text"
+              field="raza"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 10rem">
+          <div class="flex align-items-center">
+            Peso
+            <p-columnFilter
+              type="numeric"
+              field="peso"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="width: 3rem">
+          <div class="flex align-items-center">
+            Edad
+            <p-columnFilter
+              type="boolean"
+              field="edad"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="width: 3rem">
+          <div class="flex align-items-center">
+            Cumpleaños
+            <p-columnFilter
+              type="data"
+              field="fechaNacimiento"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-mascota>
+      <tr>
+        <td>
+          {{ mascota.nombre }}
+        </td>
+        <td>
+          {{mascota.tipo}}
+        </td>
+        <td>
+          {{mascota.raza}}
+        </td>
+        <td>
+          {{mascota.peso}}
+        </td>
+        <td>
+          {{mascota.fechaNacimiento }}
+        </td>
+        <td>
+          {{ mascota.fechaNacimiento | date : "MM/dd/yyyy" }}
+        </td>
+      
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>

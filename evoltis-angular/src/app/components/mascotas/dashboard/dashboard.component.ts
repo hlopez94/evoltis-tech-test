@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import * as MascotasActions from 'src/app/states/mascotas/mascotas.actions';
 import { selectTodasLasMascotas } from 'src/app/states/mascotas/mascotas.selector';
 import { filter } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(MascotasActions.cargarMascotas());
+    if(environment.mockMascotas)
+      this.agregarMascotas();
     
     this.store.pipe(
       filter((action : any) => action.type === MascotasActions.mascotaAgregada.type)
