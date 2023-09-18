@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 import { MascotasService } from './mascotas.service';
 import { Mascota } from '../model/clases/mascota.model';
@@ -12,7 +15,7 @@ describe('MascotasService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule],
-      providers: [MascotasService]
+      providers: [MascotasService],
     });
 
     service = TestBed.inject(MascotasService);
@@ -25,15 +28,33 @@ describe('MascotasService', () => {
 
   it('should retrieve mascotas from the API', () => {
     const mockMascotas: Mascota[] = [
-      { id: 1, fechaNacimiento : new Date(), nombre: 'Mascota1', peso: 5.5, raza: 'Raza1', tipo: 'Perro', edad: 2, vacunas: [] },
-      { id: 2, fechaNacimiento : new Date(), nombre: 'Mascota2', peso: 7.2, raza: 'Raza2', tipo: 'Gato', edad: 3, vacunas: [] }
+      {
+        id: 1,
+        fechaNacimiento: new Date(),
+        nombre: 'Mascota1',
+        peso: 5.5,
+        raza: 'Raza1',
+        tipo: 'Perro',
+        vacunas: [],
+      },
+      {
+        id: 2,
+        fechaNacimiento: new Date(),
+        nombre: 'Mascota2',
+        peso: 7.2,
+        raza: 'Raza2',
+        tipo: 'Gato',
+        vacunas: [],
+      },
     ];
 
     service.obtenerMascotas().subscribe((mascotas) => {
       expect(mascotas).toEqual(mockMascotas);
     });
 
-    const req = httpTestingController.expectOne(`${environment.apiUrl}/mascotas`);
+    const req = httpTestingController.expectOne(
+      `${environment.apiUrl}/mascotas`
+    );
     expect(req.request.method).toBe('GET');
 
     req.flush(mockMascotas);
