@@ -5,4 +5,10 @@
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
   overflow: auto;
+  max-width: 960px;
+  margin: auto;
+}
+
+main{
+  overflow: auto;
 }
