@@ -8,11 +8,7 @@
     [rowsPerPageOptions]="[10, 25, 50]"
     [paginator]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-    [globalFilterFields]="[
-      'nombre',
-      'tipo',
-      'raza',
-    ]"
+    [globalFilterFields]="['nombre', 'tipo', 'raza']"
   >
     <ng-template pTemplate="caption">
       <div class="flex">
@@ -105,21 +101,20 @@
           {{ mascota.nombre }}
         </td>
         <td>
-          {{mascota.tipo}}
+          {{ mascota.tipo }}
         </td>
         <td>
-          {{mascota.raza}}
+          {{ mascota.raza }}
         </td>
         <td>
-          {{mascota.peso}}
+          {{ mascota.peso }}
         </td>
         <td>
-          {{mascota.fechaNacimiento }}
+          {{ mascota.fechaNacimiento | edad }}
         </td>
         <td>
-          {{ mascota.fechaNacimiento | date : "MM/dd/yyyy" }}
+          {{ mascota.fechaNacimiento | date : "dd 'de' MMMM" }}
         </td>
-      
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

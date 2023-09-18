@@ -5,7 +5,6 @@ export interface Mascota {
   peso: number;
   raza: string;
   tipo: string;
-  edad: number;
   fechaNacimiento: Date;
 }
 

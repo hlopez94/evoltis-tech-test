@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import '@angular/common/locales/global/es';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,17 +18,25 @@ import { MascotasService } from './servicios/mascotas.service';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MenubarModule,     
-    StoreModule.forRoot({mascotas: mascotasReducer}), 
-    EffectsModule.forRoot([MascotasEffects])
+    MenubarModule,
+    StoreModule.forRoot({ mascotas: mascotasReducer }),
+    EffectsModule.forRoot([MascotasEffects]),
   ],
-  providers: [    
-    { provide: MASCOTAS_SERVICE_TOKEN, useClass: environment.mockMascotas ? MascotasServiceMock : MascotasService }, 
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-AR' },
+    {
+      provide: MASCOTAS_SERVICE_TOKEN,
+      useClass: environment.mockMascotas
+        ? MascotasServiceMock
+        : MascotasService,
+    },
   ],
 })
 export class AppModule {}

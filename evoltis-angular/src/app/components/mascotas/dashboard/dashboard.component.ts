@@ -30,22 +30,20 @@ export class DashboardComponent implements OnInit {
     var mockMascotas = [
       {
         id: 1,
-        fechaNacimiento: new Date(),
+        fechaNacimiento: new Date('2020-01-01'),
         nombre: 'Mascota1',
         peso: 5.5,
         raza: 'Raza1',
         tipo: 'Perro',
-        edad: 2,
         vacunas: [],
       },
       {
         id: 2,
-        fechaNacimiento: new Date(),
+        fechaNacimiento: new Date('2022-11-01'),
         nombre: 'Mascota2',
         peso: 7.2,
         raza: 'Raza2',
         tipo: 'Gato',
-        edad: 3,
         vacunas: [],
       },
     ];
