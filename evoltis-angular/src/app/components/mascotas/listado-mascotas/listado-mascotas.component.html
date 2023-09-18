@@ -1,6 +1,6 @@
 <ng-container *ngIf="mascotas$ | async as mascotas">
   <p-table
-    #dt1
+    #tablaMascotas
     [value]="mascotas"
     dataKey="id"
     [rows]="10"
@@ -14,7 +14,7 @@
       <div class="flex">
       <p-button
         icon="pi pi-plus"
-        (click)="clear(dt1)"
+        (click)="tablaMascotas.clear()"
         styleClass="p-button-success"
         title="Agregar Mascota"
         type="button"
@@ -26,16 +26,17 @@
           <input
             pInputText
             type="text"
-            (input)="dt1.filterGlobal($event.target , 'contains')"
+            (input)="tablaMascotas.filterGlobal(dt1SearchInput.value , 'contains')"
             placeholder="Buscar..."
             #dt1SearchInput
           />
         </span>
           <p-button
             title="Limpiar Filtros"
-            styleClass="p-button-outlined"
+            [disabled]="!(tablaMascotas | tablaPoseeFiltro)"
+            styleClass="p-button-danger p-button-outlined"
             icon="pi pi-filter-slash"
-            (click)="clear(dt1)"
+            (click)="tablaMascotas.clear()"
           ></p-button>
       </div>
     </ng-template>
