@@ -1,8 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import '@angular/common/locales/global/es';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shell/navbar/navbar.component';
@@ -11,10 +10,9 @@ import { MenubarModule } from 'primeng/menubar';
 import { HttpClientModule } from '@angular/common/http';
 import { MascotasServiceMock } from './servicios/mascotas.service.mock';
 import { MASCOTAS_SERVICE_TOKEN } from './model/interfaces/IMascotasService';
-import { MascotasEffects } from './states/mascotas/mascotas.effects';
-import { mascotasReducer } from './states/mascotas/mascotas.reducer';
 import { environment } from 'src/environments/environment';
 import { MascotasService } from './servicios/mascotas.service';
+import { MascotasStoreModule } from './states/mascotas/mascotas.store.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
@@ -23,11 +21,11 @@ import { MascotasService } from './servicios/mascotas.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MenubarModule,
-    StoreModule.forRoot({ mascotas: mascotasReducer }),
-    EffectsModule.forRoot([MascotasEffects]),
+    MascotasStoreModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-AR' },

@@ -1,4 +1,3 @@
-import { agregarMascota } from './mascotas.actions';
 // mascotas.effects.ts
 import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -6,7 +5,6 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import * as MascotasActions from './mascotas.actions';
 import { IMascotasService, MASCOTAS_SERVICE_TOKEN } from 'src/app/model/interfaces/IMascotasService';
-import { Mascota } from 'src/app/model/clases/mascota.model';
 
 @Injectable()
 export class MascotasEffects {
