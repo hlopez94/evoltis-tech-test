@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { FilterMetadata } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Observable } from 'rxjs';
 import { Mascota } from 'src/app/model/clases/mascota.model';
@@ -16,8 +17,4 @@ export class ListadoMascotasComponent {
   );
 
   constructor(private store: Store) {}
-
-  clear(table: Table) {
-    table.clear();
-  }
 }
