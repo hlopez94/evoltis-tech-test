@@ -17,4 +17,14 @@ export class ListadoMascotasComponent {
   );
 
   constructor(private store: Store) {}
+
+  verDetalle(mascota:Mascota){
+
+  }
+  baja(mascota:Mascota){
+    
+  }
+  modificar(mascota:Mascota){
+    
+  }
 }

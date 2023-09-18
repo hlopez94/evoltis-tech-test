@@ -42,7 +42,7 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 15rem">
+        <th style="min-width: 10rem">
           <div class="flex align-items-center">
             Nombre
             <p-columnFilter
@@ -52,7 +52,7 @@
             ></p-columnFilter>
           </div>
         </th>
-        <th style="min-width: 15rem">
+        <th style="min-width: 6rem">
           <div class="flex align-items-center">
             Tipo
             <p-columnFilter
@@ -63,7 +63,7 @@
           </div>
         </th>
 
-        <th style="min-width: 10rem">
+        <th style="min-width: 6rem">
           <div class="flex align-items-center">
             Raza
             <p-columnFilter
@@ -73,7 +73,7 @@
             ></p-columnFilter>
           </div>
         </th>
-        <th style="min-width: 10rem">
+        <th style="min-width: 6rem">
           <div class="flex align-items-center">
             Peso
             <p-columnFilter
@@ -103,6 +103,8 @@
             ></p-columnFilter>
           </div>
         </th>
+        <th style="min-width: 3rem">
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-mascota>
@@ -124,6 +126,11 @@
         </td>
         <td>
           {{ mascota.fechaNacimiento | date : "dd 'de' MMMM" }}
+        </td>
+        <td>
+          <p-button (click)="verDetalle(mascota)" title="Ver Detalle" icon="pi pi-eye" styleClass="p-button-rounded p-button-warning p-button-text"></p-button>
+          <p-button (click)="verDetalle(mascota)" title="Modificar" icon="pi pi-pencil" styleClass="p-button-rounded p-button-help p-button-text"></p-button>
+          <p-button (click)="verDetalle(mascota)" title="Eliminar" icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text"></p-button>
         </td>
       </tr>
     </ng-template>
